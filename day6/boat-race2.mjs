@@ -6,8 +6,9 @@ var time = parseInt(input.match(/time:([\d\s]+)$/im)[1].replace(/\s/g, ""));
 var distance = parseInt(
   input.match(/distance:([\d\s]+)$/im)[1].replace(/\s+/g, "")
 );
-console.log(time, distance);
+
 var res = 0;
+
 for (var i = 1; i < time; i++) {
   var diff = time - i;
   if (diff < i) {
@@ -15,7 +16,6 @@ for (var i = 1; i < time; i++) {
   }
 
   if (diff * i > distance) {
-    console.log(i, diff);
     res = diff - i + 1;
     break;
   }

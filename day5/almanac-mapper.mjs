@@ -35,24 +35,10 @@ humidity-to-location map:
 56 93 4`;
 var input = readFileSync("./input.txt", { encoding: "utf8" });
 
-var arrayFromRange = (startAsStr, rangeAsStr) => {
-  var startAsNum = parseInt(startAsStr);
-  var rangeAsNum = parseInt(rangeAsStr);
-  return Array.from({ length: rangeAsNum }).map((_, i) => i + startAsNum);
-};
-
 var seeds = input
   .match(/seeds: ([\d\s]+)$/m)[1]
   .trim()
-  .split(/\s/)
-  .reduce(
-    (acc, currAsStr, index, arr) =>
-      index & 1
-        ? (acc.push(arrayFromRange(arr[index - 1], currAsStr, arr, index)), acc)
-        : acc,
-    []
-  )
-  .flat();
+  .split(/\s/);
 
 var getMapInputs = (input, mapName) => {
   var reg = new RegExp(`${mapName} map:\\s+(\\d[\\d\\s]+)`);
